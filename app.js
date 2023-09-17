@@ -22,7 +22,7 @@ var corsOptions = {
 const routes = require("./routes/apiRoutes");
 app.use("/", routes);
 
-const PORT = process.env.PORT || 8080;
+const PORT = 5432;
 app.listen(PORT, () => {
   console.log("Server Listening on PORT:", PORT);
 });
