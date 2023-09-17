@@ -16,7 +16,7 @@ db.sequelize.sync({ alter: true }).then(() => {
 });
 
 var corsOptions = {
-  origin: "http://localhost:8080",
+  origin: "https://almost-a-budgeting-app-6b804606f213.herokuapp.com/",
 };
 
 const routes = require("./routes/apiRoutes");
