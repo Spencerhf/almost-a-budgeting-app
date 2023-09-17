@@ -1,1 +1,1 @@
-web: npm start
+web: --port 5001
