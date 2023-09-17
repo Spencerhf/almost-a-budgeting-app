@@ -1,8 +1,10 @@
+import 'dotenv/config';
+
 module.exports = {
-  HOST: "localhost",
-  USER: "spencer",
-  DB: "tracker_db",
-  dialect: "postgres",
+  HOST: process.env.HOST,
+  USER: process.env.USER,
+  DB: process.env.DB,
+  dialect: process.env.DIALECT,
   pool: {
     max: 5,
     min: 0,
