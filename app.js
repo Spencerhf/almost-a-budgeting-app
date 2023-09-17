@@ -3,7 +3,7 @@ const cors = require("cors");
 const path = require("path");
 const db = require("./models/index");
 const app = express();
-import 'dotenv/config';
+require('dotenv').config()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
