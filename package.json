@@ -1,13 +1,15 @@
 {
   "name": "money-tracker",
   "version": "1.0.0",
+  "engines": {
+    "node": "18.x"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon app",
     "server": "nodemon",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run start\" \"npm run client\"",
     "build": "npm run build --prefix client"
   },
   "author": "",
