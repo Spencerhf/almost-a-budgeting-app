@@ -3,7 +3,7 @@ const cors = require("cors");
 const db = require("./models/index");
 const app = express();
 
-this.app.use(express.static(
+app.use(express.static(
   path.join(__dirname,"./client/build")));
 
 app.use(express.json());
