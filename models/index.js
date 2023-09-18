@@ -1,20 +1,22 @@
 //importing modules
 const { Sequelize, DataTypes } = require("sequelize");
 
-const sequelize = new Sequelize(
-  `postgres://postgres:123456@localhost:5432/tracker_db`,
-  { dialect: "postgres" }
-);
+const sequelize = new Sequelize({
+  database: process.env.DB,
+  username: process.env.USER,
+  password: process.env.PASSWORD,
+  host: process.env.HOST,
+  port: process.env.PORT,
+  dialect: "postgres"
+});
 
-//checking if connection is done
-sequelize
-  .authenticate()
-  .catch((err) => {
-    console.log(err);
-  });
+// checking if connection is done
+sequelize.authenticate().catch((err) => {
+  console.log(err);
+});
 
 const db = {};
-db.Sequelize = Sequelize;
+db.Sequelize = sequelize;
 db.sequelize = sequelize;
 
 //connecting to model
