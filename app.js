@@ -11,18 +11,18 @@ app.use(cors(corsOptions));
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-db.sequelize.sync({ alter: true }).then(() => {
-  console.log("Drop and re-sync db.");
-});
+// db.sequelize.sync({ alter: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
 
 var corsOptions = {
-  origin: "https://almost-a-budgeting-app-6b804606f213.herokuapp.com/",
+  origin: "http://localhost:3000",
 };
 
 const routes = require("./routes/apiRoutes");
 app.use("/", routes);
 
-const PORT = process.env.PORT || 5432;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server Listening on PORT:", PORT);
 });
