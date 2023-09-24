@@ -11,9 +11,9 @@ app.use(cors(corsOptions));
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-// db.sequelize.sync({ alter: true }).then(() => {
-//   console.log("Drop and re-sync db.");
-// });
+db.sequelize.sync({ alter: true }).then(() => {
+  console.log("Drop and re-sync db.");
+});
 
 var corsOptions = {
   origin: "http://localhost:3000",
