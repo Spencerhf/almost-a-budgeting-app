@@ -1,15 +1,21 @@
 //importing modules
 const { Sequelize, DataTypes } = require("sequelize");
 
-// const sequelize = new Sequelize(
-//   `postgres://postgres:123456@localhost:5432/tracker_db`,
-//   { dialect: "postgres" }
-// );
-// Connection parameters
-const sequelize = new Sequelize('tracker_db', 'spencer', '', {
-  host: 'localhost',
-  dialect: 'postgres'
-});
+const sequelize = new Sequelize(
+  process.env.DB,
+  process.env.USER,
+  process.env.PASSWORD,
+  {
+    host: process.env.HOST,
+    dialect: "postgres",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+  }
+);
 
 const testDbConnection = async () => {
   try {
@@ -24,9 +30,9 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-// //connecting to model
-db.money_in = require("./money_in.model")(sequelize, DataTypes);
-db.money_out = require("./money_out.model")(sequelize, DataTypes);
+// // //connecting to model
+// db.money_in = require("./money_in.model")(sequelize, DataTypes);
+// db.money_out = require("./money_out.model")(sequelize, DataTypes);
 
 //exporting the module
 module.exports = db;
