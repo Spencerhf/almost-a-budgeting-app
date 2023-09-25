@@ -19,10 +19,11 @@ const sequelize = new Sequelize(
   }
 );
 
-const testDbConnection = async () => {
+const sequelizeConnection = async () => {
   try {
-    await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
+    sequelize.authenticate().then(() => {
+      console.log("Postgres connection has been established successfully.");
+    });
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
@@ -37,4 +38,7 @@ const testDbConnection = async () => {
 // db.money_out = require("./money_out.model")(sequelize, DataTypes);
 
 //exporting the module
-module.exports = sequelize;
+module.exports = {
+  sequelizeConnection,
+  sequelize
+};
