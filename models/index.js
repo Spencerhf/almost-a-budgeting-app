@@ -33,9 +33,9 @@ const sequelizeConnection = async () => {
 // db.Sequelize = Sequelize;
 // db.sequelize = sequelize;
 
-// // //connecting to model
-// db.money_in = require("./money_in.model")(sequelize, DataTypes);
-// db.money_out = require("./money_out.model")(sequelize, DataTypes);
+// //connecting to model
+sequelize.money_in = require("./money_in.model")(sequelize, DataTypes);
+sequelize.money_out = require("./money_out.model")(sequelize, DataTypes);
 
 //exporting the module
 module.exports = {
