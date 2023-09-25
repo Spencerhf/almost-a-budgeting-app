@@ -36,6 +36,25 @@ const getMonthlyActivity = async (req, res) => {
   res.send(activityList);
 };
 
+const createPurchase = async (req, res) => {
+  try {
+    await MoneyActivity.create({
+      name: req.body.name,
+      amount: req.body.amount,
+      notes: req.body.notes
+    });
+    res.status(200).send({
+      message: "Item added.",
+    })
+  } catch(err) {
+    console.log(err);
+    res.status(400).send({
+      message: "There was an issue adding this item",
+      error: err
+    });
+  }
+}
+
 const removeItem = async (req, res) => {
   await MoneyActivity.findOne({
     where: {
@@ -58,8 +77,8 @@ const removeItem = async (req, res) => {
 
 module.exports = {
   // getAll,
-  // createPurchase,
   // createIncome,
+  createPurchase,
   removeItem,
   monthlySum,
   getMonthlyActivity,

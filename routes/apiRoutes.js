@@ -1,9 +1,7 @@
 const money = require("../controllers/money.controller");
 var router = require("express").Router();
 
-router.get("/", (req, res) => {
-  res.send("It's actually working");
-})
+router.post("/add-item", money.createPurchase);
 
 router.get("/activity-list", money.getMonthlyActivity);
 
