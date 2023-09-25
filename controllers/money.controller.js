@@ -15,7 +15,11 @@ const monthlySum = async (req, res) => {
     },
     attributes: [[Sequelize.fn("sum", Sequelize.col("amount")), "totalAmount"]],
   }).then((data) => {
-    return data[0].dataValues.totalAmount;
+    if (data[0].dataValues.totalAmount === null) {
+      return '0';
+    } else {
+      return data[0].dataValues.totalAmount;
+    }
   });
 
   res.send(sum);
