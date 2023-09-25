@@ -8,14 +8,14 @@ const sequelize = new Sequelize(
   {
     host: process.env.HOST,
     dialect: "postgres",
-    // ...(process.env.NODE_ENV === "production" && {
-    //   dialectOptions: {
-    //     ssl: {
-    //       require: true,
-    //       rejectUnauthorized: false,
-    //     },
-    //   },
-    // }),
+    ...(process.env.NODE_ENV === "production" && {
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
+      },
+    }),
   }
 );
 
