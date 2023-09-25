@@ -8,12 +8,14 @@ const sequelize = new Sequelize(
   {
     host: process.env.HOST,
     dialect: "postgres",
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
+    // ...(process.env.NODE_ENV === "production" && {
+    //   dialectOptions: {
+    //     ssl: {
+    //       require: true,
+    //       rejectUnauthorized: false,
+    //     },
+    //   },
+    // }),
   }
 );
 
@@ -26,13 +28,13 @@ const testDbConnection = async () => {
   }
 };
 
-const db = {};
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+// const db = {};
+// db.Sequelize = Sequelize;
+// db.sequelize = sequelize;
 
 // // //connecting to model
 // db.money_in = require("./money_in.model")(sequelize, DataTypes);
 // db.money_out = require("./money_out.model")(sequelize, DataTypes);
 
 //exporting the module
-module.exports = db;
+module.exports = sequelize;

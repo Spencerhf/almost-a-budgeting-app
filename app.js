@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const db = require("./models/index");
+const sequelize = require("./models/index");
 const app = express();
 require('dotenv').config()
 
@@ -11,7 +11,7 @@ app.use(cors(corsOptions));
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-db.sequelize.sync({ alter: true }).then(() => {
+sequelize.sync({ alter: true }).then(() => {
   console.log("Drop and re-sync db.");
 });
 
