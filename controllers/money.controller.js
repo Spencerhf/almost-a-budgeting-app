@@ -1,6 +1,6 @@
-const db = require("../models/index");
+const { sequelize } = require("../models/index");
 const { Sequelize, Op } = require("sequelize");
-const MoneyActivity = db.money_in;
+const MoneyActivity = sequelize.money_in;
 
 const monthlySum = async (req, res) => {
   var date = new Date();
