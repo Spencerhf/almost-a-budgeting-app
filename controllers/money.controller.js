@@ -35,7 +35,7 @@ const getMonthlyActivity = async (req, res) => {
         [Op.between]: [firstDay, lastDay],
       },
     },
-    order: [["updatedAt", "ASC"]],
+    order: [["updatedAt", "DESC"]],
   });
   res.send(activityList);
 };
