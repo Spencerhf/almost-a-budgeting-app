@@ -4,6 +4,8 @@ var router = require("express").Router();
 router.post("/add-item", money.createPurchase);
 
 router.get("/activity-list", money.getMonthlyActivity);
+router.get("/money-out", money.getMoneyOut);
+router.get("/money-in", money.getMoneyIn);
 
 router.post("/remove-list/:id", money.removeItem);
 

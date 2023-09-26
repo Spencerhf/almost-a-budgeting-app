@@ -29,16 +29,58 @@ const getMonthlyActivity = async (req, res) => {
   var date = new Date();
   var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
   var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
   let activityList = await MoneyActivity.findAll({
     where: {
       createdAt: {
         [Op.between]: [firstDay, lastDay],
       },
     },
+    limit: 5,
     order: [["updatedAt", "DESC"]],
   });
   res.send(activityList);
 };
+
+const getMoneyOut = async (req, res) => {
+  var date = new Date();
+  var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+  let activityList = await MoneyActivity.findAll({
+    where: {
+      amount: {
+        [Op.lte]: 0
+      },
+      createdAt: {
+        [Op.between]: [firstDay, lastDay],
+      },
+    },
+    limit: 5,
+    order: [["updatedAt", "DESC"]],
+  });
+  res.send(activityList);
+}
+
+const getMoneyIn = async (req, res) => {
+  var date = new Date();
+  var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+  let activityList = await MoneyActivity.findAll({
+    where: {
+      amount: {
+        [Op.gt]: 0
+      },
+      createdAt: {
+        [Op.between]: [firstDay, lastDay],
+      },
+    },
+    limit: 5,
+    order: [["updatedAt", "DESC"]],
+  });
+  res.send(activityList);
+}
 
 const createPurchase = async (req, res) => {
   try {
@@ -80,8 +122,8 @@ const removeItem = async (req, res) => {
 };
 
 module.exports = {
-  // getAll,
-  // createIncome,
+  getMoneyOut,
+  getMoneyIn,
   createPurchase,
   removeItem,
   monthlySum,
