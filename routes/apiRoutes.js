@@ -2,6 +2,7 @@ const money = require("../controllers/money.controller");
 var router = require("express").Router();
 
 router.post("/add-item", money.createPurchase);
+router.post("/item-update/:id", money.updateLineItem);
 
 router.get("/activity-list", money.getMonthlyActivity);
 router.get("/money-out", money.getMoneyOut);
