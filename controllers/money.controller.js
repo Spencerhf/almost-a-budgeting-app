@@ -5,7 +5,7 @@ const MoneyActivity = sequelize.money_in;
 const monthlySum = async (req, res) => {
   var date = new Date();
   var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
 
   let sum = await MoneyActivity.findAll({
     where: {
