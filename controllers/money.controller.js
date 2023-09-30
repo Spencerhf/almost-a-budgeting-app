@@ -28,7 +28,7 @@ const monthlySum = async (req, res) => {
 const getMonthlyActivity = async (req, res) => {
   var date = new Date();
   var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
 
   let activityList = await MoneyActivity.findAll({
     where: {
@@ -45,7 +45,7 @@ const getMonthlyActivity = async (req, res) => {
 const getMoneyOut = async (req, res) => {
   var date = new Date();
   var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
 
   let activityList = await MoneyActivity.findAll({
     where: {
@@ -65,7 +65,7 @@ const getMoneyOut = async (req, res) => {
 const getMoneyIn = async (req, res) => {
   var date = new Date();
   var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
 
   let activityList = await MoneyActivity.findAll({
     where: {
