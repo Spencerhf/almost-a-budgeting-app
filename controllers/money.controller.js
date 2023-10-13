@@ -25,7 +25,7 @@ const monthlySum = async (req, res) => {
   res.send(sum);
 };
 
-const getMonthlyActivity = async (req, res) => {
+const getMonthlySnapshot = async (req, res) => {
   var date = new Date();
   var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
   var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
@@ -41,6 +41,22 @@ const getMonthlyActivity = async (req, res) => {
   });
   res.send(activityList);
 };
+
+const getAllMonthlyActivity = async (req, res) => {
+  var date = new Date();
+  var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+
+  let activityList = await MoneyActivity.findAll({
+    where: {
+      createdAt: {
+        [Op.between]: [firstDay, lastDay],
+      },
+    },
+    order: [["updatedAt", "DESC"]],
+  });
+  res.send(activityList);
+}
 
 const getMoneyOut = async (req, res) => {
   var date = new Date();
@@ -153,6 +169,7 @@ module.exports = {
   createPurchase,
   removeItem,
   monthlySum,
-  getMonthlyActivity,
+  getMonthlySnapshot,
+  getAllMonthlyActivity,
   updateLineItem,
 };
