@@ -1,7 +1,9 @@
+// require('dotenv').config();
+
 // module.exports = {
-//   HOST: "localhost",
-//   USER: "spencer",
-//   DB: "tracker_db",
+//   HOST: process.env.HOST,
+//   USER: process.env.USER,
+//   DB: process.env.DB,
 //   dialect: "postgres",
 //   pool: {
 //     max: 5,

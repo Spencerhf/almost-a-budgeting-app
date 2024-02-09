@@ -2,7 +2,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 let sequelize;
-if (process.env.NODE_ENV === "production") {
+// if (process.env.NODE_ENV === "production") {
   sequelize = new Sequelize(
     process.env.DB,
     process.env.USER,
@@ -18,17 +18,17 @@ if (process.env.NODE_ENV === "production") {
       },
     }
   );
-} else {
-  sequelize = new Sequelize(
-    "tracker_db",
-    "spencer",
-    "",
-    {
-      host: "localhost",
-      "dialect": "postgres"
-    }
-  ) 
-}
+// } else {
+//   sequelize = new Sequelize(
+//     "tracker_db",
+//     "spencer",
+//     "",
+//     {
+//       host: "localhost",
+//       "dialect": "postgres"
+//     }
+//   ) 
+// }
 
 const sequelizeConnection = async () => {
   try {
