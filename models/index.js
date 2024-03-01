@@ -9,13 +9,13 @@ let sequelize;
     process.env.PASSWORD,
     {
       host: process.env.HOST,
-      dialect: "postgres",
-      dialectOptions: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false,
-        },
-      },
+      dialect: "postgres"
+      // dialectOptions: {
+      //   ssl: {
+      //     require: true,
+      //     rejectUnauthorized: false,
+      //   },
+      // },
     }
   );
 // } else {
