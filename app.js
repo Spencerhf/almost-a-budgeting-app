@@ -16,7 +16,7 @@ sequelize.sync({ alter: true }).then(() => {
   console.log("Drop and re-sync db.");
 });
 
-// app.use(userAuth);
+app.use(userAuth);
 
 var corsOptions = {
   origin: "http://localhost:3000",
