@@ -3,6 +3,7 @@ const cors = require("cors");
 const path = require("path");
 const { sequelize } = require("./models/index");
 const app = express();
+const userAuth = require("./auth/userAuth");
 require('dotenv').config();
 
 app.use(express.json());
@@ -14,6 +15,8 @@ app.use(express.static(path.join(__dirname, 'build')));
 sequelize.sync({ alter: true }).then(() => {
   console.log("Drop and re-sync db.");
 });
+
+// app.use(userAuth);
 
 var corsOptions = {
   origin: "http://localhost:3000",
