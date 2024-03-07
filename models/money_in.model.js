@@ -1,23 +1,34 @@
 module.exports = (sequelize, Sequelize) => {
-  const activity = sequelize.define("activity", {
-    id: {
-      type: Sequelize.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
+  const activity = sequelize.define(
+    "activity",
+    {
+      id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      name: {
+        type: Sequelize.STRING,
+      },
+      amount: {
+        type: Sequelize.INTEGER,
+      },
+      notes: {
+        type: Sequelize.STRING,
+      },
+      userReferenceId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users',
+          key: 'id',
+        }
+      },
     },
-    name: {
-      type: Sequelize.STRING
-    },
-    amount: {
-      type: Sequelize.INTEGER
-    },
-    notes: {
-      type: Sequelize.STRING
+    {
+      freezeTableName: true,
+      timestamps: true,
     }
-  }, {
-    freezeTableName: true,
-    timestamps: true,
-  });
+  );
 
   return activity;
 };
